@@ -1,0 +1,320 @@
+/* Main Application Background */
+.root {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, #151A2E, #050811);
+}
+
+/* Floating background bubbles (for parallax effect) */
+.bg-bubble {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0));
+    -fx-background-radius: 50%;
+}
+
+.bg-bubble-accent {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 50%, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0));
+    -fx-background-radius: 50%;
+}
+
+/* The Glassmorphism Card */
+.glass-card {
+    -fx-background-color: rgba(20, 25, 45, 0.4);
+    -fx-background-radius: 20;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+    /* JavaFX DropShadow applied via code or inline FXML for better control, but here's a subtle base shadow */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 20, 0, 0, 10);
+    -fx-padding: 40;
+}
+
+/* Typography */
+.title-label {
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.subtitle-label {
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #9CA3AF;
+}
+
+/* Input Fields */
+.glass-text-field {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 14px;
+    -fx-padding: 10 15 10 15;
+}
+
+.glass-text-field:focused {
+    -fx-border-color: #3B82F6;
+    -fx-background-color: rgba(59, 130, 246, 0.1);
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 10, 0, 0, 0);
+}
+
+/* Login Button */
+.primary-button {
+    -fx-background-color: linear-gradient(to right, #2563EB, #4F46E5);
+    -fx-background-radius: 8;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 12 0 12 0;
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to right, #3B82F6, #6366F1);
+    -fx-effect: dropshadow(gaussian, rgba(79, 70, 229, 0.5), 15, 0, 0, 0);
+}
+
+.primary-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Links */
+.link-label {
+    -fx-text-fill: #3B82F6;
+    -fx-cursor: hand;
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 12px;
+}
+
+.link-label:hover {
+    -fx-underline: true;
+    -fx-text-fill: #60A5FA;
+}
+
+/* Social Buttons */
+.social-button {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 8;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10 20 10 20;
+}
+
+.social-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Icon Button (for password eye toggle) */
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #9CA3AF;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 0 15 0 0;
+}
+
+.icon-button:hover {
+    -fx-text-fill: white;
+}
+
+/* ========================================================================= */
+/* Phase 5: Dashboard Styles                                                   */
+/* ========================================================================= */
+
+.sidebar {
+    -fx-background-color: rgba(10, 15, 30, 0.6);
+    -fx-border-color: rgba(255, 255, 255, 0.05);
+    -fx-border-width: 0 1 0 0;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #9CA3AF;
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 15 20 15 30;
+    -fx-cursor: hand;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-text-fill: white;
+}
+
+.sidebar-button-active {
+    -fx-background-color: rgba(59, 130, 246, 0.1);
+    -fx-text-fill: #3B82F6;
+    -fx-border-color: #3B82F6;
+    -fx-border-width: 0 0 0 4;
+}
+
+.metric-card {
+    -fx-background-color: rgba(25, 30, 50, 0.5);
+    -fx-background-radius: 15;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 15;
+    -fx-border-width: 1;
+    -fx-padding: 25;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);
+}
+
+.metric-card:hover {
+    -fx-border-color: rgba(59, 130, 246, 0.5);
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.3), 20, 0, 0, 0);
+}
+
+.metric-value {
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.metric-title {
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #9CA3AF;
+}
+
+/* ========================================================================= */
+/* Pagination Buttons                                                          */
+/* ========================================================================= */
+
+.pagination-button {
+    -fx-background-color: rgba(255, 255, 255, 0.07);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 4 12 4 12;
+    -fx-min-width: 36;
+}
+
+.pagination-button:hover {
+    -fx-background-color: rgba(59, 130, 246, 0.2);
+    -fx-border-color: #3B82F6;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 8, 0, 0, 0);
+}
+
+.pagination-button:disabled {
+    -fx-opacity: 0.3;
+    -fx-cursor: default;
+}
+
+/* Secondary Button */
+.secondary-button {
+    -fx-background-color: rgba(255, 255, 255, 0.07);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(255, 255, 255, 0.15);
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10 18 10 18;
+}
+
+.secondary-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.13);
+    -fx-border-color: rgba(255,255,255,0.35);
+}
+
+/* ========================================================================= */
+/* Charts (dark theme)                                                         */
+/* ========================================================================= */
+
+.themed-chart {
+    -fx-background-color: transparent;
+    -fx-padding: 5;
+}
+
+.themed-chart .chart-plot-background {
+    -fx-background-color: rgba(255,255,255,0.03);
+    -fx-background-radius: 8;
+}
+
+.themed-chart .chart-vertical-grid-lines,
+.themed-chart .chart-horizontal-grid-lines {
+    -fx-stroke: rgba(255,255,255,0.06);
+}
+
+.themed-chart .chart-alternative-row-fill {
+    -fx-background-color: transparent;
+}
+
+.themed-chart .axis {
+    -fx-tick-label-fill: #9CA3AF;
+    -fx-tick-mark-stroke: rgba(255,255,255,0.1);
+}
+
+.themed-chart .axis-label {
+    -fx-text-fill: #6B7280;
+}
+
+.themed-chart .chart-legend {
+    -fx-background-color: transparent;
+}
+
+.themed-chart .chart-legend-item {
+    -fx-text-fill: #9CA3AF;
+}
+
+.themed-chart .chart-pie-label {
+    -fx-fill: #E5E7EB;
+    -fx-font-size: 11px;
+}
+
+.themed-chart .chart-pie-label-line {
+    -fx-stroke: rgba(255,255,255,0.3);
+}
+
+/* Bar chart bar colors */
+.themed-chart .data0.chart-bar { -fx-bar-fill: #3B82F6; }
+.themed-chart .data1.chart-bar { -fx-bar-fill: #10B981; }
+.themed-chart .data2.chart-bar { -fx-bar-fill: #8B5CF6; }
+.themed-chart .chart-bar { -fx-background-radius: 4 4 0 0; }
+
+/* ========================================================================= */
+/* Transparent ScrollPane                                                      */
+/* ========================================================================= */
+
+.transparent-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.transparent-scroll .viewport {
+    -fx-background-color: transparent;
+}
+
+.transparent-scroll .scroll-bar:vertical .track,
+.transparent-scroll .scroll-bar:horizontal .track {
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-background-radius: 4;
+}
+
+.transparent-scroll .scroll-bar:vertical .thumb,
+.transparent-scroll .scroll-bar:horizontal .thumb {
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-background-radius: 4;
+}
+
+.transparent-scroll .scroll-bar:vertical .thumb:hover,
+.transparent-scroll .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: rgba(59,130,246,0.5);
+}

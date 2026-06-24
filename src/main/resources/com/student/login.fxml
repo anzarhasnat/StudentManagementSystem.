@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.effect.GaussianBlur?>
+
+<AnchorPane fx:id="rootPane" stylesheets="@css/styles.css" styleClass="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.student.controllers.LoginController" prefHeight="720.0" prefWidth="1080.0">
+
+    <!-- Floating Background Layer for Parallax Effects -->
+    <Pane fx:id="bgLayer" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <!-- These circles will be animated by the controller -->
+        <Pane fx:id="orb1" styleClass="bg-bubble" prefWidth="400" prefHeight="400" layoutX="100" layoutY="100">
+            <effect>
+                <GaussianBlur radius="60"/>
+            </effect>
+        </Pane>
+        <Pane fx:id="orb2" styleClass="bg-bubble-accent" prefWidth="300" prefHeight="300" layoutX="600" layoutY="400">
+            <effect>
+                <GaussianBlur radius="60"/>
+            </effect>
+        </Pane>
+    </Pane>
+
+    <!-- Center layout to perfectly center the glass card -->
+    <StackPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        
+        <!-- The Glass Card -->
+        <VBox fx:id="glassCard" styleClass="glass-card" maxWidth="450" spacing="20" alignment="CENTER_LEFT">
+            <VBox spacing="5" alignment="CENTER">
+                <Label text="Sign In" styleClass="title-label"/>
+                <Label text="Welcome back to Student Management" styleClass="subtitle-label"/>
+            </VBox>
+            
+            <VBox spacing="10">
+                <Label text="Email" styleClass="subtitle-label" textFill="#e2e8f0"/>
+                <TextField fx:id="emailField" promptText="Enter your email" styleClass="glass-text-field"/>
+            </VBox>
+
+            <VBox spacing="10">
+                <Label text="Password" styleClass="subtitle-label" textFill="#e2e8f0"/>
+                <StackPane alignment="CENTER_RIGHT">
+                    <TextField fx:id="passwordVisibleField" promptText="Enter your password" styleClass="glass-text-field" visible="false" managed="false"/>
+                    <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="glass-text-field"/>
+                    <Button fx:id="togglePasswordButton" text="👁" styleClass="icon-button" onAction="#togglePasswordVisibility"/>
+                </StackPane>
+                <HBox alignment="CENTER_RIGHT">
+                    <Label text="Forgot password?" styleClass="link-label"/>
+                </HBox>
+            </VBox>
+
+            <Label fx:id="errorLabel" text="Invalid email or password" textFill="#EF4444" visible="false" managed="false" style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI', 'Inter', sans-serif;"/>
+
+            <Button fx:id="loginButton" text="Login" styleClass="primary-button" maxWidth="Infinity" onAction="#handleLogin"/>
+
+            <HBox alignment="CENTER" spacing="10">
+                <Region HBox.hgrow="ALWAYS" style="-fx-border-color: rgba(255,255,255,0.15); -fx-border-width: 0 0 1 0;" prefHeight="1"/>
+                <Label text="Or continue with" styleClass="subtitle-label"/>
+                <Region HBox.hgrow="ALWAYS" style="-fx-border-color: rgba(255,255,255,0.15); -fx-border-width: 0 0 1 0;" prefHeight="1"/>
+            </HBox>
+
+            <HBox spacing="15" alignment="CENTER">
+                <!-- Using text for simplicity, could use FontAwesome icons -->
+                <Button text="Google" styleClass="social-button" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Apple" styleClass="social-button" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="GitHub" styleClass="social-button" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Facebook" styleClass="social-button" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="5">
+                <Label text="Don't have an account?" styleClass="subtitle-label"/>
+                <Label text="Sign up" styleClass="link-label"/>
+            </HBox>
+        </VBox>
+    </StackPane>
+
+</AnchorPane>

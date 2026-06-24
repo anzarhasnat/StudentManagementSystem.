@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.GaussianBlur?>
+
+<AnchorPane fx:id="rootPane" stylesheets="@css/styles.css" styleClass="root"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.student.controllers.DashboardController">
+
+    <!-- Background Orbs -->
+    <Pane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <Pane styleClass="bg-bubble" prefWidth="600" prefHeight="600" layoutX="-100" layoutY="-100">
+            <effect><GaussianBlur radius="100"/></effect>
+        </Pane>
+        <Pane styleClass="bg-bubble-accent" prefWidth="500" prefHeight="500" layoutX="900" layoutY="400">
+            <effect><GaussianBlur radius="100"/></effect>
+        </Pane>
+    </Pane>
+
+    <HBox AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
+        <!-- ── Sidebar ──────────────────────────────────────────────────── -->
+        <VBox styleClass="sidebar" prefWidth="260" spacing="10">
+            <VBox alignment="CENTER" spacing="8">
+                <padding><Insets top="35" right="20" bottom="30" left="20"/></padding>
+                <Label text="📘 SMS" styleClass="title-label" style="-fx-font-size: 22px;"/>
+                <Label text="Student Management" styleClass="subtitle-label"/>
+            </VBox>
+
+            <Button fx:id="navDashboardBtn" text="⊞  Dashboard"
+                    styleClass="sidebar-button, sidebar-button-active"
+                    maxWidth="Infinity" onAction="#showHomeView"/>
+            <Button fx:id="navStudentsBtn" text="👥  Students"
+                    styleClass="sidebar-button" maxWidth="Infinity" onAction="#showStudentsView"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button fx:id="logoutButton" text="🚪  Logout"
+                    styleClass="sidebar-button" maxWidth="Infinity" onAction="#handleLogout"/>
+            <padding><Insets bottom="20"/></padding>
+        </VBox>
+
+        <!-- ── Main Content ─────────────────────────────────────────────── -->
+        <StackPane HBox.hgrow="ALWAYS">
+
+            <!-- 1. Home View (wrapped in ScrollPane with fx:id for toggling) -->
+            <ScrollPane fx:id="homeScrollPane" fitToWidth="true" styleClass="transparent-scroll">
+                <VBox fx:id="homeView" spacing="25">
+                    <padding><Insets top="35" right="45" bottom="35" left="45"/></padding>
+
+                    <!-- Header -->
+                    <HBox alignment="CENTER_LEFT">
+                        <VBox spacing="4">
+                            <Label text="Dashboard Overview" styleClass="title-label"/>
+                            <Label text="Welcome back — here's what's happening today." styleClass="subtitle-label"/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="↻  Refresh" styleClass="primary-button" onAction="#loadMetricData"/>
+                    </HBox>
+
+                    <!-- Loading Indicator -->
+                    <HBox fx:id="loadingBox" alignment="CENTER" spacing="10" visible="false" managed="false">
+                        <ProgressIndicator prefWidth="24" prefHeight="24"/>
+                        <Label text="Fetching data..." styleClass="subtitle-label"/>
+                    </HBox>
+
+                    <!-- Metric Cards -->
+                    <HBox spacing="25" fx:id="metricsBox">
+                        <VBox styleClass="metric-card" HBox.hgrow="ALWAYS" spacing="8">
+                            <Label text="Total Students" styleClass="metric-title"/>
+                            <Label fx:id="totalStudentsLabel" text="-" styleClass="metric-value"/>
+                            <Label text="all time enrolled" styleClass="subtitle-label"/>
+                        </VBox>
+                        <VBox styleClass="metric-card" HBox.hgrow="ALWAYS" spacing="8">
+                            <Label text="Active Students" styleClass="metric-title"/>
+                            <Label fx:id="recentStudentsLabel" text="-" styleClass="metric-value" style="-fx-text-fill: #10B981;"/>
+                            <Label text="currently enrolled" styleClass="subtitle-label"/>
+                        </VBox>
+                        <VBox styleClass="metric-card" HBox.hgrow="ALWAYS" spacing="8">
+                            <Label text="Active Courses" styleClass="metric-title"/>
+                            <Label fx:id="activeCoursesLabel" text="-" styleClass="metric-value" style="-fx-text-fill: #8B5CF6;"/>
+                            <Label text="distinct programs" styleClass="subtitle-label"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Charts Row -->
+                    <HBox spacing="25">
+                        <!-- Pie Chart -->
+                        <VBox styleClass="glass-card" HBox.hgrow="ALWAYS" spacing="10" prefWidth="400">
+                            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                            <Label text="Course Distribution" styleClass="title-label" style="-fx-font-size: 17px;"/>
+                            <Label text="Students per program" styleClass="subtitle-label"/>
+                            <PieChart fx:id="courseChart" prefHeight="260"
+                                      legendVisible="true" labelsVisible="true"
+                                      styleClass="themed-chart"/>
+                        </VBox>
+
+                        <!-- Bar Chart -->
+                        <VBox styleClass="glass-card" HBox.hgrow="ALWAYS" spacing="10" prefWidth="380">
+                            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                            <Label text="Student Status" styleClass="title-label" style="-fx-font-size: 17px;"/>
+                            <Label text="Active · Inactive · Graduated" styleClass="subtitle-label"/>
+                            <BarChart fx:id="statusChart" prefHeight="260"
+                                      legendVisible="false" animated="true"
+                                      styleClass="themed-chart">
+                                <xAxis><CategoryAxis tickLabelFill="#9CA3AF"/></xAxis>
+                                <yAxis><NumberAxis tickLabelFill="#9CA3AF"/></yAxis>
+                            </BarChart>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Recent Activity -->
+                    <VBox styleClass="glass-card" spacing="12">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label text="Recent Activity" styleClass="title-label" style="-fx-font-size: 17px;"/>
+                        <Label text="Students added in the last 7 days" styleClass="subtitle-label"/>
+                        <ListView fx:id="activityList" prefHeight="160"
+                                  style="-fx-background-color: transparent; -fx-control-inner-background: transparent;"/>
+                    </VBox>
+
+                </VBox>
+            </ScrollPane>
+
+            <!-- 2. Students CRUD View -->
+            <fx:include fx:id="studentsView" source="students.fxml" visible="false" managed="false"/>
+
+        </StackPane>
+    </HBox>
+</AnchorPane>

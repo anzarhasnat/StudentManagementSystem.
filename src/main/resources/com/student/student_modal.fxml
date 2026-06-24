@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox spacing="20" styleClass="glass-card" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.student.controllers.StudentModalController" prefWidth="450">
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Label fx:id="modalTitleLabel" text="Add New Student" styleClass="title-label" style="-fx-font-size: 24px;"/>
+    
+    <VBox spacing="15">
+        <HBox spacing="15">
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Full Name" styleClass="subtitle-label"/>
+                <TextField fx:id="nameField" promptText="John Doe" styleClass="glass-text-field"/>
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Roll Number" styleClass="subtitle-label"/>
+                <TextField fx:id="rollNumberField" promptText="RN001" styleClass="glass-text-field"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="15">
+            <VBox spacing="5" prefWidth="120">
+                <Label text="Branch" styleClass="subtitle-label"/>
+                <TextField fx:id="branchField" promptText="Computer Science" styleClass="glass-text-field"/>
+            </VBox>
+        </HBox>
+
+    </VBox>
+
+    <Label fx:id="errorLabel" text="Error message" textFill="#EF4444" visible="false" managed="false" style="-fx-font-size: 13px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+        <Button text="Cancel" styleClass="secondary-button" onAction="#handleCancel"/>
+        <Button fx:id="saveButton" text="Save Student" styleClass="primary-button" onAction="#handleSave"/>
+    </HBox>
+
+</VBox>
